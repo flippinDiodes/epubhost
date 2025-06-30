@@ -23,7 +23,8 @@
 	<script type="module">
 		import { Reader } from "./js/epubreader.min.js"
 		const url = new URL(window.location)
-		const path = url.searchParams.get("bookPath") || "https://s3.amazonaws.com/moby-dick/"
+		const path = url.searchParams.get("bookPath") || "https://flippindiodes.github.io/epubhost/Spirits-and-Mixers-Kindle.epub
+"
 		window.onload = (e) => new Reader(path)
 	</script>
 </head>
