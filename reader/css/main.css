@@ -15,8 +15,9 @@
 }
 
 body {
-	margin: 10;
-	padding: 10;
+	margin: 8;
+	padding: 8;
+	line-height: 1.6;
 	overflow: hidden;
 }
 
