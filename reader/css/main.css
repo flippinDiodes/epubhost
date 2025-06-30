@@ -17,7 +17,7 @@
 body {
 	margin: 8;
 	padding: 8;
-	line-height: 1.6;
+	line-height: 1.6em;
 	overflow: hidden;
 }
 
@@ -29,7 +29,8 @@ body {
 	display: flex;
 	position: absolute;
 	overflow: hidden;
-	background: #f4f1ea;
+	background: #273137;
+	color: #F6F6F6;
 	align-items: center;
 }
 
