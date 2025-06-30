@@ -20,12 +20,35 @@
 	<script src="js/libs/epub.min.js"></script>
 
 	<!-- Reader -->
-	<script type="module">
-		import { Reader } from "./js/epubreader.min.js"
-		const url = new URL(window.location)
-		const path = url.searchParams.get("bookPath") || "https://flippindiodes.github.io/epubhost/Spirits-and-Mixers-Kindle.epub"
-		window.onload = (e) => new Reader(path)
-	</script>
+<script type="module">
+  import { Reader } from "./js/epubreader.min.js";
+
+  const url = new URL(window.location);
+  const path = url.searchParams.get("bookPath") || "https://flippindiodes.github.io/epubhost/Spirits-and-Mixers-Kindle.epub";
+
+  window.onload = () => {
+    const reader = new Reader(path);
+
+    // Wait for the book to render, then inject custom CSS
+    const interval = setInterval(() => {
+      const iframe = document.querySelector("iframe");
+      if (iframe && iframe.contentDocument) {
+        const style = iframe.contentDocument.createElement("style");
+        style.innerHTML = `
+          body {
+            background: #f4f1ea !important;
+            color: #333 !important;
+            font-family: Georgia, serif !important;
+            line-height: 1.6 !important;
+            padding: 1em !important;
+          }
+        `;
+        iframe.contentDocument.head.appendChild(style);
+        clearInterval(interval);
+      }
+    }, 500);
+  };
+</script>
 </head>
 
 <body>
