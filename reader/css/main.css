@@ -56,8 +56,12 @@ body {
 }
 
 #viewer .epub-view {
-    width: auto !important;
+	width: 100% !important;
+	height: 100% !important;
+	border: none;
+	displaey: block;
 }
+
 
 #viewer iframe {
 	border: none;
@@ -204,9 +208,3 @@ only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: la
 	}
 }
 
-iframe {
-	width: 100% !important;
-	height: 100% !important;
-	border: none;
-	displaey: block;
-}
