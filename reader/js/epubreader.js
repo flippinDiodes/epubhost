@@ -3228,28 +3228,26 @@ class Reader {
 	}
 }
 
-event_emitter(Reader.prototype);
-var __webpack_exports__Reader = __webpack_exports__.Reader;
-export { __webpack_exports__Reader as Reader };
-
-function stripBodyStyleOnceLoaded() {
+// Wait for the iframe to be created and patch its sandbox
+const waitForIframe = setInterval(() => {
   const iframe = document.querySelector("iframe");
-  if (!iframe) return;
 
-  iframe.addEventListener("load", () => {
-    try {
-      const doc = iframe.contentDocument || iframe.contentWindow.document;
-      if (doc && doc.body) {
+  if (iframe) {
+    clearInterval(waitForIframe);
+
+    // Patch the sandbox attribute
+    iframe.setAttribute("sandbox", "allow-same-origin allow-scripts");
+
+    // Optional: remove inline styles from body
+    iframe.addEventListener("load", () => {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
         doc.body.removeAttribute("style");
-        console.log("✅ Inline body style removed.");
+        console.log("✅ Patched iframe sandbox and removed inline body style.");
+      } catch (e) {
+        console.warn("⚠️ Could not access iframe body:", e);
       }
-    } catch (e) {
-      console.warn("⚠️ Could not access iframe body:", e);
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", stripBodyStyleOnceLoaded);
-
-
+    });
+  }
+}, 200);
 //# sourceMappingURL=epubreader.js.map
