@@ -118,3 +118,18 @@ only screen and (height: 320px) and (orientation: landscape) {
 		height: 30px;
 	}
 }
+
+		html, body{
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+}
+		img, image {
+		display: block;
+		width: 100% !important;
+		height:100% !important;
+		object-fit: cover;
+		margin: 0;
+		padding: 0;
+		}
