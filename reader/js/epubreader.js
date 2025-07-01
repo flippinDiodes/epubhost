@@ -3232,4 +3232,24 @@ event_emitter(Reader.prototype);
 var __webpack_exports__Reader = __webpack_exports__.Reader;
 export { __webpack_exports__Reader as Reader };
 
+function stripBodyStyleOnceLoaded() {
+  const iframe = document.querySelector("iframe");
+  if (!iframe) return;
+
+  iframe.addEventListener("load", () => {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (doc && doc.body) {
+        doc.body.removeAttribute("style");
+        console.log("✅ Inline body style removed.");
+      }
+    } catch (e) {
+      console.warn("⚠️ Could not access iframe body:", e);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", stripBodyStyleOnceLoaded);
+
+
 //# sourceMappingURL=epubreader.js.map
