@@ -208,3 +208,10 @@ only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: la
 	}
 }
 
+body {
+	width: 100% !important;
+	height: 100% !important;
+	margin: 0 !important;
+	padding:0 !important;
+	overflow: visible !important;
+}
